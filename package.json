@@ -8,8 +8,10 @@
   "scripts": {
     "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
     "build:node": "turbo run build --filter=octicons-extended",
+    "build:react": "turbo run build --filter=octicons-extended-react",
     "build:all": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json && turbo run build",    
     "test:node": "turbo run test --filter=octicons-extended", 
+    "test:react": "turbo run test --filter=octicons-extended-react", 
     "test:all": "turbo run test",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
