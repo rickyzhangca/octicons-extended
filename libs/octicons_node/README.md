@@ -1,3 +1,3 @@
 # octicons-extended
 
-This is the node build.
+This is the Node build.
