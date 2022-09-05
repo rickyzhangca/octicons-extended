@@ -5,7 +5,7 @@
     "registry": "publish from libs only!"
   },
   "scripts": {
-    "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output lib/build/data.json",
+    "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
   "dependencies": {
