@@ -13,6 +13,7 @@
     "test:node": "turbo run test --filter=octicons-extended",
     "test:react": "turbo run test --filter=octicons-extended-react",
     "test:all": "turbo run test",
+    "start:react": "turbo run start --filter=octicons-extended-react",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
   "dependencies": {
