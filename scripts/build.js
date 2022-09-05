@@ -50,14 +50,12 @@ if (svgFilepaths.length === 0) {
 const ogSvgFilepaths = globby
   .sync(argv.og)
   .filter((filepath) => path.parse(filepath).ext === '.svg');
-console.log(ogSvgFilepaths);
 const namesTemp = [];
 svgFilepaths.map((s) => {
   namesTemp.push(path.parse(s).base);
 });
 ogSvgFilepaths.map((ogFilepath) => {
   if (!namesTemp.includes(path.parse(ogFilepath).base)) {
-    console.log(ogFilepath);
     svgFilepaths.push(ogFilepath);
   }
 });
