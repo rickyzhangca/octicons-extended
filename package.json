@@ -9,9 +9,9 @@
     "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
     "build:node": "turbo run build --filter=octicons-extended",
     "build:react": "turbo run build --filter=octicons-extended-react",
-    "build:all": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json && turbo run build",    
-    "test:node": "turbo run test --filter=octicons-extended", 
-    "test:react": "turbo run test --filter=octicons-extended-react", 
+    "build:all": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json && turbo run build",
+    "test:node": "turbo run test --filter=octicons-extended",
+    "test:react": "turbo run test --filter=octicons-extended-react",
     "test:all": "turbo run test",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
@@ -26,6 +26,7 @@
     "prettier": "^2.7.1",
     "svgo": "1.3.2",
     "trim-newlines": "3.0.1",
+    "typescript": "^4.8.2",
     "yargs": "15.1.0"
   },
   "eslintConfig": {
@@ -43,5 +44,5 @@
   },
   "workspaces": [
     "libs/*"
-   ]
+  ]
 }
