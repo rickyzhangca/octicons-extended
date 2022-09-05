@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 
 const formats = ['esm', 'umd'] // 'cjs' ?
@@ -9,9 +9,8 @@ export default {
     babel({
       babelrc: false,
       presets: [
-        ['env', {modules: false}],
-        'stage-0',
-        'react'
+        ['@babel/preset-env', {modules: false}],
+        '@babel/preset-react'
       ]
     }),
     commonjs()

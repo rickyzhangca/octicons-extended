@@ -1,7 +1,8 @@
 import React from 'react'
 import {Box, Text} from '@primer/components'
 import pkg from '../package.json'
-import Octicon, {iconsByName} from '../'
+import Octicon from '../'
+import * as octicons from '../'
 
 export default function App() {
   const sizes = ['small', 'medium', 'large']
@@ -10,22 +11,16 @@ export default function App() {
       <table className="data-table">
         <thead>
           <tr>
-            <th>key</th>
-            <th>import</th>
+            <th>module name</th>
             <th>small, medium, large</th>
             <th>code sample</th>
           </tr>
         </thead>
         <tbody>
-          {Object.keys(iconsByName).map(key => {
-            const Icon = iconsByName[key]
+          {Object.keys(octicons).map(key => {
+            const Icon = octicons[key]
             return (
               <tr key={key}>
-                <td>
-                  <Text mono nowrap>
-                    {key}
-                  </Text>
-                </td>
                 <td>
                   <Text mono nowrap>
                     {Icon.name}
@@ -40,9 +35,7 @@ export default function App() {
                 </td>
                 <td>
                   <pre>
-                    {`
-import Octicon, {${Icon.name}} from '${pkg.name}'
-export default () => <Octicon icon={${Icon.name}} />
+                    {`import Octicon, {${Icon.name}} from '${pkg.name}'/>
                   `.trim()}
                   </pre>
                 </td>
