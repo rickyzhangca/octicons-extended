@@ -1,8 +1,8 @@
 import React from 'react'
 import {Box, Text} from '@primer/components'
 import pkg from '../package.json'
-import Octicon from '../'
-import * as octicons from '../'
+import Octicon from '../src'
+import * as octicons from '../src'
 
 export default function App() {
   const sizes = ['small', 'medium', 'large']
@@ -13,7 +13,7 @@ export default function App() {
           <tr>
             <th>module name</th>
             <th>small, medium, large</th>
-            <th>code sample</th>
+            <th>code</th>
           </tr>
         </thead>
         <tbody>
