@@ -4,3 +4,6 @@ node_modules
 libs/**/build/
 /package-lock.json
 *.log
+.turbo
+.next/**
+dist/**

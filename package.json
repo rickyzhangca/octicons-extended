@@ -1,11 +1,16 @@
 {
   "name": "octicons-extended",
   "version": "1.0.0",
+  "private": true,
   "publishConfig": {
     "registry": "publish from libs only!"
   },
   "scripts": {
     "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
+    "build:node": "turbo run build --filter=octicons-extended",
+    "build:all": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json && turbo run build",    
+    "test:node": "turbo run test --filter=octicons-extended", 
+    "test:all": "turbo run test",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
   "dependencies": {
@@ -30,5 +35,11 @@
       "ecmaVersion": 2017,
       "requireConfigFile": false
     }
-  }
+  },
+  "devDependencies": {
+    "turbo": "^1.4.5"
+  },
+  "workspaces": [
+    "libs/*"
+   ]
 }
