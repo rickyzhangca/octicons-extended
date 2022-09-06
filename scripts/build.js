@@ -70,7 +70,7 @@ const icons = svgFilepaths.map((svgFilepath) => {
 
     if (!svgFilenamePattern.test(svgFilename)) {
       throw new Error(
-        `${filename}: Invalid filename. Not matching the pattern defined.`
+        `${svgFilename}: Invalid filename. Not matching the pattern defined.`
       );
     }
 
