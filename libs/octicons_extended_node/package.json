@@ -18,7 +18,6 @@
   },
   "scripts": {
     "build": "\\cp -r ../build/ ./build && \\cp index.scss ./build/build.css",
-    "lint": "eslint index.js tests/*.js",
     "test": "ava --verbose 'tests/*.js'"
   },
   "keywords": [
@@ -32,17 +31,6 @@
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "eslint": "^6.5.1"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "requireConfigFile": false
-    }
+    "ava": "^0.22.0"
   }
 }

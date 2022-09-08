@@ -9,18 +9,17 @@
     "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
     "build:node": "turbo run build --filter=octicons-extended",
     "build:react": "turbo run build --filter=octicons-extended-react",
-    "build:all": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json && turbo run build",
+    "build:docs": "turbo run build --filter=octicons-extended-docs",
+    "build:all": "yarn build && turbo run build",
     "test:node": "turbo run test --filter=octicons-extended",
     "test:react": "turbo run test --filter=octicons-extended-react",
     "test:all": "turbo run test",
     "start:react": "turbo run start --filter=octicons-extended-react",
+    "start:docs": "turbo run start --filter=octicons-extended-docs",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
   "dependencies": {
     "cheerio": "1.0.0-rc.3",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "fs-extra": "7.0.1",
     "globby": "11.0.0",
     "lodash.merge": "4.6.2",
@@ -44,6 +43,7 @@
     "turbo": "^1.4.5"
   },
   "workspaces": [
-    "libs/*"
+    "libs/**",
+    "docs/**"
   ]
 }
