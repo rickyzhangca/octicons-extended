@@ -4,7 +4,7 @@ import React from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import toast, { Toaster } from 'react-hot-toast';
 import copy from 'copy-to-clipboard';
-import icons from '../sortedData.json';
+import icons from '../../libs/build/sortedData.json';
 import useSearch from '../hooks/useSearch';
 import Icon from '../components/icon';
 import Button from '../components/button';
