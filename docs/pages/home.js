@@ -91,6 +91,7 @@ const SidePanel = () => {
               .focus();
           }}
         />
+        {/*
         <Button
           icon={<DownloadIcon />}
           text={'Download SVG'}
@@ -103,6 +104,7 @@ const SidePanel = () => {
               .focus();
           }}
         />
+        */}
       </ButtonsContainer>
     </SidePanelContainer>
   );
