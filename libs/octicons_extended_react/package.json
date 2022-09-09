@@ -9,7 +9,7 @@
   "module": "dist/index.esm.js",
   "sideEffects": false,
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/rickyzhangca/octicons-extended",
+  "repository": "https://github.com/rickyzhangca/octicons-extended.git",
   "bugs": {
     "url": "https://github.com/rickyzhangca/octicons-extended/issues"
   },
