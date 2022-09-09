@@ -7,8 +7,8 @@ const globby = require('globby');
 const cheerio = require('cheerio');
 const trimNewlines = require('trim-newlines');
 const yargs = require('yargs');
-const merge = require('lodash.merge');
-const sortBy = require('lodash.sortBy');
+const merge = require('lodash/merge');
+const sortBy = require('lodash/sortBy');
 
 // Build a JSON file that contains all information about the SVGs
 // A modified version of https://github.com/primer/octicons/blob/main/script/build.js
