@@ -80,8 +80,6 @@ test('Passing in aria-label will update the a11y options', (t) => {
 });
 
 test('Passing in width will size properly', (t) => {
-  console.log(octicons);
-  console.log(octicons['X']);
   const svg = octicons['x'].toSVG({ height: 60 });
   t.regex(
     svg,
