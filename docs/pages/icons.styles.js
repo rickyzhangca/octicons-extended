@@ -18,6 +18,7 @@ export const TopBarContainer = tw.div`
     items-center
     justify-center
     py-4
+    pl-5
     justify-between
 `;
 
@@ -92,6 +93,13 @@ export const CategoryHeaderDivider = tw.div`
 export const CategoryText = tw.p`
     text-gray-500
     capitalize
+`;
+
+export const NoResultsWrapper = tw.div`
+    grow
+    flex
+    flex-col
+    items-center
 `;
 
 // for some reason there has be a a default export

@@ -19,11 +19,58 @@ import Container, {
   TooltipText,
   CategoryText,
   TopBarContainer,
+  NoResultsWrapper,
 } from './icons.styles';
 import Search from '../components/search';
 
 const assembleSvg = (icon) => {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${icon.width} ${icon.height}" width="${icon.width}" height="${icon.height}">${icon.path}</svg>`;
+};
+
+// the current implementation of tooltip make the interactions laggy!
+const showTooltip = false;
+
+const renderIcon = (icon) => {
+  if (showTooltip) {
+    return (
+      <Tooltip.Root key={`${icon.name}-${icon.height}`}>
+        <Tooltip.Trigger asChild>
+          <IconWrapper
+            onClick={() => {
+              copy(assembleSvg(icon));
+              toast.custom(
+                <Toast>
+                  <ToastText>SVG copied!</ToastText>
+                </Toast>,
+                { duration: 400 }
+              );
+            }}>
+            <Icon width={icon.width} height={icon.height} path={icon.path} />
+          </IconWrapper>
+        </Tooltip.Trigger>
+        <Tooltip.Portal>
+          <TooltipContent side='bottom' sideOffset={-4}>
+            <TooltipText>{icon.name}</TooltipText>
+          </TooltipContent>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    );
+  }
+  return (
+    <IconWrapper
+      key={`${icon.name}-${icon.height}`}
+      onClick={() => {
+        copy(assembleSvg(icon));
+        toast.custom(
+          <Toast>
+            <ToastText>{`SVG copied 👍 ${icon.name}`}</ToastText>
+          </Toast>,
+          { duration: 400 }
+        );
+      }}>
+      <Icon width={icon.width} height={icon.height} path={icon.path} />
+    </IconWrapper>
+  );
 };
 
 const Icons = () => {
@@ -57,7 +104,7 @@ const Icons = () => {
           placeholder='Search'
         />
         <Button
-          text={showAllSizes ? 'Show all sizes' : 'Only show 24px'}
+          text={showAllSizes ? 'Only show 24px' : 'Show all sizes'}
           onClick={() => {
             setShowAllSizes(!showAllSizes);
           }}
@@ -73,38 +120,27 @@ const Icons = () => {
               </CategoryHeaderContainer>
               <IconsGrid>
                 {icons.map((icon) => {
-                  <Tooltip.Root key={`${icon.name}-${icon.height}`}>
-                    <Tooltip.Trigger asChild>
-                      <IconWrapper
-                        onClick={() => {
-                          copy(assembleSvg(icon));
-                          toast.custom(
-                            <Toast>
-                              <ToastText>SVG copied!</ToastText>
-                            </Toast>,
-                            { duration: 400 }
-                          );
-                        }}>
-                        <Icon
-                          width={icon.width}
-                          height={icon.height}
-                          path={icon.path}
-                        />
-                      </IconWrapper>
-                    </Tooltip.Trigger>
-                    <Tooltip.Portal>
-                      <TooltipContent side='bottom' sideOffset={-4}>
-                        <TooltipText>{icon.name}</TooltipText>
-                      </TooltipContent>
-                    </Tooltip.Portal>
-                  </Tooltip.Root>;
+                  if (showAllSizes || (!showAllSizes && icon.height === '24')) {
+                    return renderIcon(icon);
+                  }
                 })}
               </IconsGrid>
             </div>
           ))}
         </Tooltip.Provider>
       ) : (
-        <p>No results found</p>
+        <NoResultsWrapper>
+          <p>
+            No results found. You can create an icon request{' '}
+            <a
+              href='https://github.com/rickyzhangca/octicons-extended/issues'
+              target='_blank'
+              rel='noreferrer'>
+              here
+            </a>{' '}
+            and we&apos;ll get back to you soon!
+          </p>
+        </NoResultsWrapper>
       )}
     </Container>
   );

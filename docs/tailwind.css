@@ -35,3 +35,8 @@ input {
   @apply bg-transparent;
   @apply focus:outline-none;
 }
+
+a {
+  @apply text-accent;
+  @apply hover:underline
+}
