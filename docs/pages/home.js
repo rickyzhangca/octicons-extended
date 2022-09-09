@@ -59,7 +59,12 @@ const SidePanel = () => {
           icon={<FigmaIcon />}
           text={'Open in Figma'}
           onClick={() => {
-            window.open('https://google.com', '_blank').focus();
+            window
+              .open(
+                'https://www.figma.com/community/file/1150065417044869754',
+                '_blank'
+              )
+              .focus();
           }}
         />
         <Button
