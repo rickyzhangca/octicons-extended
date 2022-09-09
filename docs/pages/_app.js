@@ -4,7 +4,7 @@ import '../tailwind.css';
 import Head from 'next/head';
 import Home from './home';
 
-function MyApp() {
+const MyApp = () => {
   return (
     <>
       <Head>
@@ -45,13 +45,12 @@ function MyApp() {
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-      <main className='container mx-auto max-w-screen-xl pt-8 px-4'>
+      <main>
         <Home />
       </main>
     </>
   );
-}
+};
 
-// Wrap the MyApp root component with translation context
-// so we can use the useTranslation hook in all components of the Application
+// eslint-disable-next-line import/no-unused-modules
 export default MyApp;
