@@ -2,7 +2,7 @@
   "name": "octicons-extended",
   "version": "1.0.0",
   "description": "A handcrafted extension to Github's beautiful Octicons",
-  "homepage": "https://octicons-extended.com/",
+  "homepage": "https://github.com/rickyzhangca/octicons-extended",
   "author": "Ricky Zhang",
   "license": "MIT",
   "style": "index.scss",
@@ -25,7 +25,6 @@
     "icons",
     "svg",
     "octicons",
-    "primer",
     "extended"
   ],
   "dependencies": {

@@ -13,25 +13,3 @@
     font-named-instance: "Regular";
   }
 }
-
-html {
-  @apply antialiased;
-  @apply selection:bg-[#adadad62];
-  font-family: Inter, system-ui, sans-serif;
-}
-
-p {
-  @apply text-gray-900;
-  @apply font-normal;
-  @apply text-base;
-}
-
-input {
-  @apply focus:outline-none;
-  @apply focus:text-gray-900;
-  @apply text-gray-600;
-  @apply font-normal;
-  @apply text-base;
-  @apply bg-transparent;
-  @apply focus:outline-none;
-}

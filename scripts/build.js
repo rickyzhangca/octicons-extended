@@ -8,7 +8,6 @@ const cheerio = require('cheerio');
 const trimNewlines = require('trim-newlines');
 const yargs = require('yargs');
 const merge = require('lodash.merge');
-const sortBy = require('lodash.sortBy');
 
 // Build a JSON file that contains all information about the SVGs
 // A modified version of https://github.com/primer/octicons/blob/main/script/build.js
@@ -67,7 +66,6 @@ const names = [];
 const icons = svgFilepaths.map((svgFilepath) => {
   try {
     const svgFilename = path.parse(svgFilepath).base;
-    const svgFoldername = path.basename(path.dirname(svgFilepath));
     const svgFilenamePattern = /(.+)-([0-9]+).svg$/;
 
     if (!svgFilenamePattern.test(svgFilename)) {
@@ -82,9 +80,7 @@ const icons = svgFilepaths.map((svgFilepath) => {
     const svgWidth = parseInt(svgElement.attr('width'));
     const svgHeight = parseInt(svgElement.attr('height'));
     const svgPath = trimNewlines(svgElement.html()).trim();
-    // hardcoded og-icons case so that it is readable
-    const svgCategory =
-      svgFoldername === 'og-icons' ? 'original octicons' : svgFoldername;
+
     if (!svgWidth) {
       throw new Error(`${svgFilename}: Missing width attribute.`);
     }
@@ -104,7 +100,6 @@ const icons = svgFilepaths.map((svgFilepath) => {
       width: svgWidth,
       height: svgHeight,
       path: svgPath,
-      category: svgCategory,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -120,12 +115,11 @@ if (exitCode !== 0) {
 }
 
 // build
-let iconsByName = icons.reduce(
+const iconsByName = icons.reduce(
   (acc, icon) =>
     merge(acc, {
       [icon.name]: {
         name: icon.name,
-        category: icon.category,
         heights: {
           [icon.height]: {
             width: icon.width,
@@ -136,8 +130,6 @@ let iconsByName = icons.reduce(
     }),
   {}
 );
-
-iconsByName = sortBy(iconsByName, 'category');
 
 // output
 if (argv.output) {

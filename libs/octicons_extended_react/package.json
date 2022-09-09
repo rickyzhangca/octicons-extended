@@ -2,7 +2,7 @@
   "name": "octicons-extended-react",
   "version": "1.0.0",
   "description": "A handcrafted extension to Github's beautiful Octicons",
-  "homepage": "https://octicons-extended.com/",
+  "homepage": "https://github.com/rickyzhangca/octicons-extended",
   "author": "Ricky Zhang",
   "license": "MIT",
   "main": "dist/index.umd.js",
@@ -10,9 +10,6 @@
   "sideEffects": false,
   "types": "dist/index.d.ts",
   "repository": "https://github.com/rickyzhangca/octicons-extended",
-  "bugs": {
-    "url": "https://github.com/rickyzhangca/octicons-extended/issues"
-  },
   "scripts": {
     "build": "script/build.js && script/types.js && npm run rollup",
     "ts-test": "tsc -P ts-tests",
