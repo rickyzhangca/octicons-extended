@@ -8,7 +8,8 @@
     "start": "next start",
     "start:dev": "next dev",
     "test": "jest",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "license": "MIT",
   "dependencies": {
