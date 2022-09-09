@@ -13,7 +13,7 @@ const Container = tw.div`
 
 export const TopBarContainer = tw.div`
     flex
-    flex-col
+    flex-row
     gap-2
     items-center
     justify-center
