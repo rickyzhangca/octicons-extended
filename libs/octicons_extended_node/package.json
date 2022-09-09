@@ -2,7 +2,7 @@
   "name": "octicons-extended",
   "version": "1.0.0",
   "description": "A handcrafted extension to Github's beautiful Octicons",
-  "homepage": "https://github.com/rickyzhangca/octicons-extended",
+  "homepage": "https://octicons-extended.com/",
   "author": "Ricky Zhang",
   "license": "MIT",
   "style": "index.scss",
@@ -18,7 +18,6 @@
   },
   "scripts": {
     "build": "\\cp -r ../build/ ./build && \\cp index.scss ./build/build.css",
-    "lint": "eslint index.js tests/*.js",
     "test": "ava --verbose 'tests/*.js'"
   },
   "keywords": [
@@ -26,23 +25,13 @@
     "icons",
     "svg",
     "octicons",
+    "primer",
     "extended"
   ],
   "dependencies": {
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "eslint": "^6.5.1"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "requireConfigFile": false
-    }
+    "ava": "^0.22.0"
   }
 }

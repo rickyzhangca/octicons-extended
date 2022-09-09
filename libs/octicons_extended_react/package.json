@@ -2,7 +2,7 @@
   "name": "octicons-extended-react",
   "version": "1.0.0",
   "description": "A handcrafted extension to Github's beautiful Octicons",
-  "homepage": "https://github.com/rickyzhangca/octicons-extended",
+  "homepage": "https://octicons-extended.com/",
   "author": "Ricky Zhang",
   "license": "MIT",
   "main": "dist/index.umd.js",
@@ -10,13 +10,15 @@
   "sideEffects": false,
   "types": "dist/index.d.ts",
   "repository": "https://github.com/rickyzhangca/octicons-extended",
+  "bugs": {
+    "url": "https://github.com/rickyzhangca/octicons-extended/issues"
+  },
   "scripts": {
     "build": "script/build.js && script/types.js && npm run rollup",
     "ts-test": "tsc -P ts-tests",
     "test": "jest",
     "posttest": "npm run ts-test",
     "start": "NODE_ENV=dev next",
-    "lint": "eslint src pages script",
     "rollup": "rollup -c"
   },
   "keywords": [
@@ -37,10 +39,6 @@
     "@babel/preset-env": "^7.19.0",
     "@babel/preset-react": "^7.18.6",
     "styled-components":"5.3.5",
-    "eslint": "^6.5.1",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-react": "7.23.2",
     "fs-extra": "^6.0.1",
     "jest": "^23.2.0",
     "next": "^12.2.5",
