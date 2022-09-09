@@ -1,5 +1,4 @@
 import tw from 'tailwind-styled-components';
-import * as Tooltip from '@radix-ui/react-tooltip';
 
 const Container = tw.div`
     md:overflow-y-scroll
@@ -16,7 +15,6 @@ export const TopBarContainer = tw.div`
     flex-row
     gap-2
     items-center
-    justify-center
     py-4
     pl-5
     justify-between
@@ -38,23 +36,6 @@ export const IconWrapper = tw.div`
     min-w-[4.25rem]
     min-h-[4.25rem]
     hover:bg-gray-200
-`;
-
-export const TooltipContent = tw(Tooltip.Content)`
-    flex
-    items-center
-    justify-center
-    px-2
-    py-1
-    bg-gray-900
-    shadow
-    z-40
-`;
-
-export const TooltipText = tw.p`
-    text-sm
-    font-semibold
-    text-white
 `;
 
 export const Toast = tw.div`

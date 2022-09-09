@@ -1,7 +1,7 @@
 import flatMap from 'lodash.flatmap';
 import groupBy from 'lodash.groupby';
 import React from 'react';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import ReactTooltip from 'react-tooltip';
 import toast, { Toaster } from 'react-hot-toast';
 import copy from 'copy-to-clipboard';
 import icons from '../../libs/build/sortedData.json';
@@ -15,8 +15,6 @@ import Container, {
   IconWrapper,
   Toast,
   ToastText,
-  TooltipContent,
-  TooltipText,
   CategoryText,
   TopBarContainer,
   NoResultsWrapper,
@@ -27,38 +25,11 @@ const assembleSvg = (icon) => {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${icon.width} ${icon.height}" width="${icon.width}" height="${icon.height}">${icon.path}</svg>`;
 };
 
-// the current implementation of tooltip make the interactions laggy!
-const showTooltip = false;
-
 const renderIcon = (icon) => {
-  if (showTooltip) {
-    return (
-      <Tooltip.Root key={`${icon.name}-${icon.height}`}>
-        <Tooltip.Trigger asChild>
-          <IconWrapper
-            onClick={() => {
-              copy(assembleSvg(icon));
-              toast.custom(
-                <Toast>
-                  <ToastText>SVG copied!</ToastText>
-                </Toast>,
-                { duration: 400 }
-              );
-            }}>
-            <Icon width={icon.width} height={icon.height} path={icon.path} />
-          </IconWrapper>
-        </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <TooltipContent side='bottom' sideOffset={-4}>
-            <TooltipText>{icon.name}</TooltipText>
-          </TooltipContent>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    );
-  }
   return (
     <IconWrapper
       key={`${icon.name}-${icon.height}`}
+      data-tip={icon.name}
       onClick={() => {
         copy(assembleSvg(icon));
         toast.custom(
@@ -95,6 +66,14 @@ const Icons = () => {
   return (
     <Container>
       <Toaster position={'bottom-center'} />
+      <ReactTooltip
+        type='dark'
+        effect='solid'
+        className='tooltip'
+        place='bottom'
+        offset={{ top: 4 }}
+        isCapture
+      />
       <TopBarContainer>
         <Search
           autoFocus
@@ -111,23 +90,21 @@ const Icons = () => {
         />
       </TopBarContainer>
       {Object.entries(iconsByCategory).length > 0 ? (
-        <Tooltip.Provider delayDuration={0} disableHoverableContent>
-          {Object.entries(iconsByCategory).map(([category, icons]) => (
-            <div key={category}>
-              <CategoryHeaderContainer>
-                <CategoryText>{category}</CategoryText>
-                <CategoryHeaderDivider />
-              </CategoryHeaderContainer>
-              <IconsGrid>
-                {icons.map((icon) => {
-                  if (showAllSizes || (!showAllSizes && icon.height === '24')) {
-                    return renderIcon(icon);
-                  }
-                })}
-              </IconsGrid>
-            </div>
-          ))}
-        </Tooltip.Provider>
+        Object.entries(iconsByCategory).map(([category, icons]) => (
+          <div key={category}>
+            <CategoryHeaderContainer>
+              <CategoryText>{category}</CategoryText>
+              <CategoryHeaderDivider />
+            </CategoryHeaderContainer>
+            <IconsGrid>
+              {icons.map((icon) => {
+                if (showAllSizes || (!showAllSizes && icon.height === '24')) {
+                  return renderIcon(icon);
+                }
+              })}
+            </IconsGrid>
+          </div>
+        ))
       ) : (
         <NoResultsWrapper>
           <p>

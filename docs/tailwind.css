@@ -38,5 +38,15 @@ input {
 
 a {
   @apply text-accent;
-  @apply hover:underline
+  @apply hover:underline;
+}
+
+.tooltip {
+  @apply !px-2;
+  @apply !py-1;
+  @apply !bg-gray-900;
+  @apply !opacity-100;
+  @apply !font-semibold;
+  @apply !text-sm;
+  @apply !text-white;
 }

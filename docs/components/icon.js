@@ -13,6 +13,7 @@ const Icon = ({ width, height, path, ...props }) => {
         display: 'inline-block',
         verticalAlign: 'text-bottom',
       }}
+      pointerEvents={'none'}
       {...props}
     />
   );
