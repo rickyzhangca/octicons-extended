@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import '../tailwind.css';
 
 import Head from 'next/head';
@@ -45,6 +46,15 @@ const MyApp = () => {
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='theme-color' content='#ffffff' />
       </Head>
+      <Script
+        async
+        src='https://www.googletagmanager.com/gtag/js?id=G-MW6PXWV2EF'></Script>
+      <Script id='ga'>
+        {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MW6PXWV2EF');`}
+      </Script>
       <main>
         <Home />
       </main>

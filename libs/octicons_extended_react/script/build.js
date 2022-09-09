@@ -59,7 +59,7 @@ function writeTypes(file) {
   const code = `${GENERATED_HEADER}
 import * as React from 'react'
 
-type Size = 'small' | 'medium' | 'large'
+type Size = 'small' | 'normal' | 'medium' | 'large'
 
 interface IconProps {
   'aria-label'?: string
