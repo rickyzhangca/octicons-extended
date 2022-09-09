@@ -26,24 +26,10 @@ jobs:
 
       - name: Build my App
         run: yarn build && yarn export && touch ./out/.nojekyll
-        
-      - name: Fetch action
-        id: pl
-        uses: Rishabh510/Path-lister-action@master
-        with:
-          path: ".github/"
-          type: ".yml"
-
-      - name: Output results
-        run: |
-          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
-          for i in ${{ steps.pl.outputs.paths }}; do
-          echo $i
-          done
           
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: out # The folder the action should deploy.
+          FOLDER: ./out # The folder the action should deploy.
