@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variable Fonts */
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400 500 600 700;
+    font-display: swap;
+    src: url("./fonts/Inter.var.woff2") format("woff2");
+    font-named-instance: "Regular";
+  }
+}
+
+html {
+  @apply antialiased;
+  @apply selection:bg-[#adadad62];
+  font-family: Inter, system-ui, sans-serif;
+}
+
+p {
+  @apply text-gray-900;
+  @apply font-normal;
+  @apply text-base;
+}
+
+input {
+  @apply focus:outline-none;
+  @apply focus:text-gray-900;
+  @apply text-gray-600;
+  @apply font-normal;
+  @apply text-base;
+  @apply bg-transparent;
+  @apply focus:outline-none;
+}
+
+a {
+  @apply text-accent;
+  @apply hover:underline
+}
