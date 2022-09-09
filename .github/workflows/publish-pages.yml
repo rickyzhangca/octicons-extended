@@ -7,9 +7,6 @@ on:
 jobs:
   build-docs:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./docs
 
     steps:
       - name: Checkout 🛎️
