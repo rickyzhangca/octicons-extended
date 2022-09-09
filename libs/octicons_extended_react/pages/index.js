@@ -5,14 +5,14 @@ import Octicon from '../src';
 import * as octicons from '../src';
 
 export default function App() {
-  const sizes = ['small', 'medium', 'large'];
+  const sizes = ['small', 'normal', 'medium', 'large'];
   return (
     <Box p={4}>
       <table className='data-table'>
         <thead>
           <tr>
             <th>module name</th>
-            {/* <th>small, medium, large</th> */}
+            {/* <th>small, normal, medium, large</th> */}
             <th>code</th>
           </tr>
         </thead>

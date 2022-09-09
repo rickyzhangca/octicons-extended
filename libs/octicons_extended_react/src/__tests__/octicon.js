@@ -98,6 +98,12 @@ describe('An icon component', () => {
       expect(container.querySelector('svg')).toHaveAttribute('height', '16');
     });
 
+    it('respects size="normal"', () => {
+      const { container } = render(<AlertIcon size='normal' />);
+      expect(container.querySelector('svg')).toHaveAttribute('width', '24');
+      expect(container.querySelector('svg')).toHaveAttribute('height', '24');
+    });
+
     it('respects size="medium"', () => {
       const { container } = render(<AlertIcon size='medium' />);
       expect(container.querySelector('svg')).toHaveAttribute('width', '32');
