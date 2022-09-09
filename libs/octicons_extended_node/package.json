@@ -12,7 +12,7 @@
     "index.scss",
     "build"
   ],
-  "repository": "https://github.com/rickyzhangca/octicons-extended",
+  "repository": "https://github.com/rickyzhangca/octicons-extended.git",
   "bugs": {
     "url": "https://github.com/rickyzhangca/octicons-extended/issues"
   },
