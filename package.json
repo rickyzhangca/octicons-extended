@@ -17,6 +17,7 @@
     "test:all": "turbo run test",
     "start:react": "turbo run start --filter=octicons-extended-react",
     "start:docs": "turbo run start --filter=octicons-extended-docs",
+    "dev:docs": "cd docs && yarn start:dev",
     "svgo": "find icons og-icons -name *.svg -exec svgo {} --config .svgo.yml \\;"
   },
   "dependencies": {
