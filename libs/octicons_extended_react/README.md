@@ -1,8 +1,6 @@
 
 ![light-mode](https://user-images.githubusercontent.com/16908811/189388116-76fdda7f-ca1c-4b39-800e-272a8c985975.png#gh-light-mode-only)
 
-![dark-mode](https://user-images.githubusercontent.com/16908811/189388072-c2687f9e-a2bb-4d5b-b14f-ad9bc74a1036.png#gh-dark-mode-only)
-
 # Octicons Extended
 
 A handcrafted extension to GitHub’s beautiful Octicons.
