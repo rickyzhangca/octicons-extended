@@ -15,6 +15,12 @@ import Container, {
   ButtonsContainer,
   SidePanelContainerUpper,
 } from './home.styles';
+import {
+  DownloadIcon,
+  FigmaIcon,
+  MarkGithubIcon,
+  NpmIcon,
+} from 'octicons-extended-react';
 
 const SidePanel = () => {
   return (
@@ -50,12 +56,14 @@ const SidePanel = () => {
       </SidePanelContainerUpper>
       <ButtonsContainer>
         <Button
+          icon={<FigmaIcon />}
           text={'Open in Figma'}
           onClick={() => {
             window.open('https://google.com', '_blank').focus();
           }}
         />
         <Button
+          icon={<MarkGithubIcon />}
           text={'View on GitHub'}
           onClick={() => {
             window
@@ -67,6 +75,7 @@ const SidePanel = () => {
           }}
         />
         <Button
+          icon={<NpmIcon />}
           text={'Install with npm'}
           onClick={() => {
             window
@@ -78,6 +87,7 @@ const SidePanel = () => {
           }}
         />
         <Button
+          icon={<DownloadIcon />}
           text={'Download SVG'}
           onClick={() => {
             window
