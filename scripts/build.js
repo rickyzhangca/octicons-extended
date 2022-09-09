@@ -16,10 +16,10 @@ const sortBy = require('lodash.sortBy');
 // specify args
 const { argv } = yargs
   .usage(
-    'Usage: $0 --extended <extended icons filepath> --og <original octicons filepath> --output <output filepath>'
+    'Usage: $0 --extended <extended icons filepath> --og <original octicons filepath> --output1 <output filepath> --output2 <output filepath>'
   )
   .example(
-    '$0 --extended icons/**/*.svg --og og-icons/**/*.svg --output build/data.json'
+    '$0 --extended icons/**/*.svg --og og-icons/**/*.svg --output1 libs/build/data.json --output2 libs/build/sortedData.json'
   )
   .option('extended', {
     type: 'array',
@@ -31,10 +31,15 @@ const { argv } = yargs
     demandOption: true,
     describe: 'Input original SVG files. Files will be found recursively.',
   })
-  .option('output', {
+  .option('output1', {
     type: 'string',
-    describe:
-      'Output JSON file. Defaults to stdout if no output file is provided.',
+    demandOption: true,
+    describe: 'Output JSON file 1.',
+  })
+  .option('output2', {
+    type: 'string',
+    demandOption: true,
+    describe: 'Output JSON file 2, sorted by category.',
   });
 
 // find svg files
@@ -120,7 +125,7 @@ if (exitCode !== 0) {
 }
 
 // build
-let iconsByName = icons.reduce(
+const iconsByName = icons.reduce(
   (acc, icon) =>
     merge(acc, {
       [icon.name]: {
@@ -137,11 +142,8 @@ let iconsByName = icons.reduce(
   {}
 );
 
-iconsByName = sortBy(iconsByName, 'category');
+const sortedIcons = sortBy(iconsByName, 'category');
 
 // output
-if (argv.output) {
-  fs.outputJsonSync(path.resolve(argv.output), iconsByName);
-} else {
-  process.stdout.write(JSON.stringify(iconsByName));
-}
+fs.outputJsonSync(path.resolve(argv.output1), iconsByName);
+fs.outputJsonSync(path.resolve(argv.output2), sortedIcons);

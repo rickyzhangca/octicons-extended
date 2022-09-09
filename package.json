@@ -6,7 +6,7 @@
     "registry": "publish from libs only!"
   },
   "scripts": {
-    "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output libs/build/data.json",
+    "build": "node scripts/build.js --extended icons/**/*.svg --og og-icons/**/*.svg --output1 libs/build/data.json --output2 libs/build/sortedData.json",
     "build:node": "turbo run build --filter=octicons-extended",
     "build:react": "turbo run build --filter=octicons-extended-react",
     "build:docs": "turbo run build --filter=octicons-extended-docs",
