@@ -60,5 +60,9 @@ export const ButtonsContainer = tw.div`
     gap-1
 `;
 
+export const ShieldWrapper = tw.div`
+    max-h-6
+`;
+
 // for some reason there has be a a default export
 export default Container;

@@ -881,6 +881,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@uiw/react-shields@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@uiw/react-shields/-/react-shields-1.1.3.tgz#dff6f46bc1d4c0adacc24289d6fd1c42af4ce8e2"
+  integrity sha512-C9luqzMB6TkTWCYqSNtMjKUBwQPNGHe8hUGZOe93uvGyKvX1m4H2am0lz10gnIKpcAZBGOZRsct6YbkIq6lQyw==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
