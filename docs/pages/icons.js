@@ -25,7 +25,9 @@ import Search from '../components/search';
 import useIsMount from '../hooks/useMount';
 
 const pascalCase = (str) => {
-  return str.replace(/(^|-)([a-z])/g, (_, __, c) => c.toUpperCase());
+  return str
+    .replace(/(^|-)([a-z])/g, (_, __, c) => c.toUpperCase())
+    .replace(/[-]/g, '');
 };
 
 const assembleSvg = (icon) => {
