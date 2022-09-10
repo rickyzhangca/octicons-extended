@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Octicon, { MarkGithubIcon, PlusIcon, RepoIcon } from '../src';
 
-function TestOcticons() {
+const TestOcticons = () => {
   return (
     <div>
       <Octicon icon={RepoIcon} size='large' verticalAlign='middle' />{' '}
@@ -24,4 +24,4 @@ function TestOcticons() {
       />
     </div>
   );
-}
+};

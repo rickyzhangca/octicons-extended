@@ -3,8 +3,7 @@ import { Box, Text } from '@primer/components';
 import pkg from '../package.json';
 import Octicon from '../src';
 import * as octicons from '../src';
-
-export default function App() {
+const App = () => {
   const sizes = ['small', 'normal', 'medium', 'large'];
   return (
     <Box p={4}>
@@ -49,4 +48,6 @@ export default function App() {
       </table>
     </Box>
   );
-}
+};
+
+export default App;

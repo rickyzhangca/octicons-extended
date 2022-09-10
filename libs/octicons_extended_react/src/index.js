@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Octicon({ icon: Icon, children, ...props }) {
+const Octicon = ({ icon: Icon, children, ...props }) => {
   // eslint-disable-next-line no-console
   console.warn(
     // eslint-disable-next-line
@@ -11,6 +11,8 @@ export default function Octicon({ icon: Icon, children, ...props }) {
   ) : (
     React.cloneElement(React.Children.only(children), props)
   );
-}
+};
+
+export default Octicon;
 
 export * from './__generated__/icons';

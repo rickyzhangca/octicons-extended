@@ -9,23 +9,25 @@ const typesFile = join(srcDir, 'icons.d.ts');
 
 const GENERATED_HEADER = '/* THIS FILE IS GENERATED. DO NOT EDIT IT. */';
 
-function pascalCase(str) {
-  return str.replace(/(^|-)([a-z])/g, (_, __, c) => c.toUpperCase());
-}
+const pascalCase = (str) => {
+  return str
+    .replace(/(^|-)([a-z])/g, (_, __, c) => c.toUpperCase())
+    .replace(/[-]/g, '');
+};
 
 const icons = Object.entries(octicons)
   .map(([key, octicon]) => {
-    const name = `${pascalCase(octicon.name).replace(/[-]/g, '')}Icon`;
-    const code = `function ${name}(props) {
-  const svgDataByHeight = ${JSON.stringify(octicon.heights)}
-  return <svg {...getSvgProps({...props, svgDataByHeight})} />
-}
+    const name = `${pascalCase(octicon.name)}Icon`;
+    const code = `const ${name} = (props) => {
+    const svgDataByHeight = ${JSON.stringify(octicon.heights)}
+    return <svg {...getSvgProps({...props, svgDataByHeight})} />
+  }
 
-${name}.defaultProps = {
-  className: 'octicon octicon-${key}',
-  size: 16,
-  verticalAlign: 'text-bottom'
-}
+  ${name}.defaultProps = {
+    className: 'octicon octicon-${key}',
+    size: 16,
+    verticalAlign: 'text-bottom'
+  }
 `;
 
     return {
@@ -37,7 +39,7 @@ ${name}.defaultProps = {
   })
   .sort((a, b) => a.key.localeCompare(b.key));
 
-function writeIcons(file) {
+const writeIcons = (file) => {
   const count = icons.length;
   const code = `${GENERATED_HEADER}
 import React from 'react'
@@ -52,37 +54,37 @@ export {
     console.warn('wrote %s with %d exports', file, count);
     return icons;
   });
-}
+};
 
-function writeTypes(file) {
+const writeTypes = (file) => {
   const count = icons.length;
   const code = `${GENERATED_HEADER}
-import * as React from 'react'
+    import * as React from 'react'
 
-type Size = 'small' | 'normal' | 'medium' | 'large'
+    type Size = 'small' | 'normal' | 'medium' | 'large'
 
-interface IconProps {
-  'aria-label'?: string
-  className?: string
-  fill?: string
-  size?: number | Size
-  verticalAlign?: 'middle' | 'text-bottom' | 'text-top' | 'top' | 'unset'
-}
+    interface IconProps {
+      'aria-label'?: string
+      className?: string
+      fill?: string
+      size?: number | Size
+      verticalAlign?: 'middle' | 'text-bottom' | 'text-top' | 'top' | 'unset'
+    }
 
-type Icon = React.FC<IconProps>
+    type Icon = React.FC<IconProps>
 
-${icons.map(({ name }) => `declare const ${name}: Icon`).join('\n')}
+    ${icons.map(({ name }) => `declare const ${name}: Icon`).join('\n')}
 
-export {
-  Icon,
-  IconProps,
-  ${icons.map(({ name }) => name).join(',\n  ')}
-}`;
+    export {
+      Icon,
+      IconProps,
+      ${icons.map(({ name }) => name).join(',\n  ')}
+    }`;
   return fse.writeFile(file, code, 'utf8').then(() => {
     console.warn('wrote %s with %d exports', file, count);
     return icons;
   });
-}
+};
 
 fse
   .mkdirs(srcDir)

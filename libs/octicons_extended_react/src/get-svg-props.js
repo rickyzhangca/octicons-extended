@@ -5,14 +5,14 @@ const sizeMap = {
   large: 64,
 };
 
-export default function getSvgProps({
+const getSvgProps = ({
   'aria-label': ariaLabel,
   className,
   fill = 'currentColor',
   size,
   verticalAlign,
   svgDataByHeight,
-}) {
+}) => {
   const height = sizeMap[size] || size;
   const naturalHeight = closestNaturalHeight(
     Object.keys(svgDataByHeight),
@@ -39,13 +39,15 @@ export default function getSvgProps({
     },
     dangerouslySetInnerHTML: { __html: path },
   };
-}
+};
 
-function closestNaturalHeight(naturalHeights, height) {
+export default getSvgProps;
+
+const closestNaturalHeight = (naturalHeights, height) => {
   return naturalHeights
     .map((naturalHeight) => parseInt(naturalHeight, 10))
     .reduce(
       (acc, naturalHeight) => (naturalHeight <= height ? naturalHeight : acc),
       naturalHeights[0]
     );
-}
+};
