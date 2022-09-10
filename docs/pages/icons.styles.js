@@ -20,6 +20,13 @@ export const TopBarContainer = tw.div`
     justify-between
 `;
 
+export const ButtonsContainer = tw.div`
+    flex
+    flex-row
+    gap-6
+    items-center
+`;
+
 export const IconsGrid = tw.div`
     flex
     flex-wrap
