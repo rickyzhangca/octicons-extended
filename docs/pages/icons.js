@@ -4,6 +4,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import toast, { Toaster } from 'react-hot-toast';
 import copy from 'copy-to-clipboard';
+import Cookies from 'js-cookie';
 import icons from '../../libs/build/sortedData.json';
 import useSearch from '../hooks/useSearch';
 import Icon from '../components/icon';
@@ -21,6 +22,7 @@ import Container, {
   ButtonsContainer,
 } from './icons.styles';
 import Search from '../components/search';
+import useIsMount from '../hooks/useMount';
 
 const pascalCase = (str) => {
   return str.replace(/(^|-)([a-z])/g, (_, __, c) => c.toUpperCase());
@@ -40,9 +42,50 @@ const fireToast = (text) => {
 };
 
 const Icons = () => {
+  const isMount = useIsMount();
   const [query, setQuery] = React.useState('');
-  const [showAllSizes, setShowAllSizes] = React.useState(false);
   const [copyComponent, setCopyComponent] = React.useState(false);
+  const [showAllSizes, setShowAllSizes] = React.useState(false);
+  React.useEffect(() => {
+    const copyComponentCookie = Cookies.get(
+      'react-icons-extended-copy-component'
+    );
+    if (copyComponentCookie) {
+      setCopyComponent(copyComponentCookie === 'true');
+    } else {
+      Cookies.set('react-icons-extended-copy-component', 'false');
+    }
+    const showAllSizesCookie = Cookies.get(
+      'react-icons-extended-show-all-sizes'
+    );
+    if (showAllSizesCookie) {
+      setShowAllSizes(showAllSizesCookie === 'true');
+    } else {
+      Cookies.set('react-icons-extended-show-all-sizes', 'false');
+    }
+  }, []);
+  React.useEffect(() => {
+    Cookies.set(
+      'react-icons-extended-copy-component',
+      copyComponent.toString()
+    );
+    !isMount &&
+      fireToast(
+        copyComponent
+          ? '🖱️ Clicking an icon now copies React component name'
+          : '🖱️ Clicking an icon now copies SVG'
+      );
+  }, [copyComponent, isMount]);
+  React.useEffect(() => {
+    Cookies.set('react-icons-extended-show-all-sizes', showAllSizes.toString());
+    !isMount &&
+      fireToast(
+        showAllSizes
+          ? '💡 Showing icons at all sizes'
+          : '💡 Showing 24px icons only'
+      );
+  }, [isMount, showAllSizes]);
+
   const iconsArray = React.useMemo(() => {
     return flatMap(Object.values(icons), (icon) => {
       return Object.entries(icon.heights).map(([height, value]) => ({
@@ -80,25 +123,15 @@ const Icons = () => {
         />
         <ButtonsContainer>
           <Button
-            text={copyComponent ? 'Copy component' : 'Copy SVG'}
+            text={copyComponent ? 'Copy SVG' : 'Copy component'}
             onClick={() => {
               setCopyComponent(!copyComponent);
-              fireToast(
-                copyComponent
-                  ? '🖱️ Clicking an icon now copies React component name'
-                  : '🖱️ Clicking an icon now copies SVG'
-              );
             }}
           />
           <Button
             text={showAllSizes ? 'Only show 24px' : 'Show all sizes'}
             onClick={() => {
               setShowAllSizes(!showAllSizes);
-              fireToast(
-                showAllSizes
-                  ? '💡 Showing 24px icons only'
-                  : '💡 Showing icons at all sizes'
-              );
             }}
           />
         </ButtonsContainer>
@@ -119,12 +152,12 @@ const Icons = () => {
                       data-tip={icon.name}
                       onClick={() => {
                         if (copyComponent) {
-                          copy(assembleSvg(icon));
-                          fireToast(`Copied SVG 👍`);
-                        } else {
                           const name = `${pascalCase(icon.name)}Icon`;
                           copy(name);
                           fireToast(`Copied ${name} 👍`);
+                        } else {
+                          copy(assembleSvg(icon));
+                          fireToast(`Copied SVG 👍`);
                         }
                       }}>
                       <Icon
