@@ -1,4 +1,5 @@
 import React from 'react';
+import { Npm } from '@uiw/react-shields';
 import Button from '../components/button';
 import Logo from '../components/logo';
 
@@ -14,6 +15,7 @@ import Container, {
   TitleContainer,
   ButtonsContainer,
   SidePanelContainerUpper,
+  ShieldWrapper,
 } from './home.styles';
 import {
   DownloadIcon,
@@ -89,8 +91,14 @@ const SidePanel = () => {
                 '_blank'
               )
               .focus();
-          }}
-        />
+          }}>
+          <ShieldWrapper>
+            <Npm.Version
+              packageName='octicons-extended-react'
+              version='latest'
+            />
+          </ShieldWrapper>
+        </Button>
         {/*
         <Button
           icon={<DownloadIcon />}
